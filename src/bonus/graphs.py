@@ -20,5 +20,5 @@ def show_data_line(km: list[int], price: list[int], theta0, theta1) -> None:
     graph.plot(theta0,theta1)
     graph.xlabel("Km")
     graph.ylabel("Price")
-    graph.title("Data Distribution")
+    graph.title("Line")
     graph.show()

@@ -6,6 +6,10 @@ from helper.read_data import save_theta
 from bonus.graphs import show_data_distribution
 from bonus.graphs import show_data_line
 import matplotlib.pyplot as graph
+import numpy as np
+
+EPOCH = 1000
+LEARNING_RATE = 0.001
 
 def train(data_set_path: str):
     print("hey you let's train")
@@ -37,13 +41,19 @@ def train(data_set_path: str):
 
 def linear_regression(km: list[int], price: list[int]) -> tuple[float, float] :
 
+    learning_rate = 0.0001
+    number_iterations = 1000
     #iciiiiiiiiiii :)
     tmp_theta0 = 3
     tmp_theta1 = 1
     print(km)
     print(price)
+    nb_data = len(price)
+
+    while (JUST - ESTIM > LEARNING_RATE):
 
 
+        tmp_theta0 = learning_rate *  (theta0 + (theta1 * km)) - price
     #loss_function
     #gradient
 
