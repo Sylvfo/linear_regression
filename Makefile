@@ -10,12 +10,12 @@ predict:
 	$(PYTHON) src/predict/predict.py
 
 train:
-	$(PYTHON) src/train/train.py
+	$(PYTHON) src/train/train.py $(DATA_SET)
 
 flake:
 	$(FLAKE) src
 
 fclean:
 	rm -f model.csv
-	
+
 .PHONY: all predict train flake

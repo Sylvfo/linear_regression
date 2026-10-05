@@ -10,3 +10,14 @@ active cet environnement. À partir de là, si tu fais :
 pip install numpy
 numpy est installé dans ce projet, pas globalement sur ton ordinateur.
 
+--------------------
+
+linear regression:
+
+theta0 = hauteur courbe
+theta1 = son angle?
+
+
+2/3 data to train
+1/3 to test
+
