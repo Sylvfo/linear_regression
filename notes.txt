@@ -1,0 +1,12 @@
+venv = virtual environment.
+C’est un environnement Python isolé pour ton projet. Il contient sa propre version de pip et ses propres librairies installées.
+
+python3 -m venv .venv
+Python crée un dossier .venv/ avec cet environnement.
+
+source .venv/bin/activate
+active cet environnement. À partir de là, si tu fais :
+
+pip install numpy
+numpy est installé dans ce projet, pas globalement sur ton ordinateur.
+
