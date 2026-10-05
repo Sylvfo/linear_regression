@@ -1,0 +1,33 @@
+venv = virtual environment.
+C’est un environnement Python isolé pour ton projet. Il contient sa propre version de pip et ses propres librairies installées.
+
+python3 -m venv .venv
+Python crée un dossier .venv/ avec cet environnement.
+
+source .venv/bin/activate
+active cet environnement. À partir de là, si tu fais :
+
+pip install numpy
+numpy est installé dans ce projet, pas globalement sur ton ordinateur.
+
+--------------------
+
+linear regression:
+
+https://www.youtube.com/watch?v=3dhcmeOTZ_Q&list=PLpFdrKzTyc_BzAfi81vNvT8Xc-vAmnR07
+
+theta0 = pente de la ligne.  slope of the line
+theta1 = ordonnée à l'origine de la droite, intercept of the line or biais in machine learning
+
+diffences between the point and the line : squared errors (see the pic)
+
+if we total the areas of all these squares we will get the sum of the square error and this is the loss function
+
+we should find the theta0 and theta1 coefficient that will minimize that sum of squared errors
+
+here this is gradient descent
+
+2/3 data to train
+1/3 to test
+
+
