@@ -22,3 +22,14 @@ def show_data_line(km: list[int], price: list[int], theta0, theta1) -> None:
     graph.ylabel("Price")
     graph.title("Line")
     graph.show()
+
+
+def show_cost(iterations: list[float], cost: list[float]) -> None:
+    graph.style.use('default')
+
+    graph.plot(iterations, cost)
+    # make an other line with thetas
+    graph.xlabel("Epoch")
+    graph.ylabel("Cost")
+    graph.title("How well")
+    graph.show()

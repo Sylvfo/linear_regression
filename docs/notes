@@ -55,5 +55,6 @@ So i suppose tmptheta1 is used to correct predictmodel such that next time it pr
 The learningrate is just a value that you can choose to decide how much you want modify predictprice, if learningrate is zero, then you dont change at all
 
 theta0 is for weight (slope of the line) and theta1 is intercept of the line or biais(the height)
+
 Yeah ok, then temptheta1 and temptheta2 is how much you are going to change theta1 and theta2 such that next time make the sum .... Be closer to zero
 You do this again and again until the sum ... Cannot be closer to zero
