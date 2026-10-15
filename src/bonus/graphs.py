@@ -13,9 +13,9 @@ def show_data_distribution(km: list[int], price: list[int]) -> None:
     graph.plot(km, price, 'bo')
     graph.xlabel("Km")
     graph.ylabel("Price")
-    graph.title("Data Distribution")
+    graph.title("Price vs mileage")
     # graph.show()
-    save_graph("data_distribution.png")
+    save_graph("price_vs_mileage.png")
     graph.close()
 
 
@@ -27,9 +27,9 @@ def show_data_line(km: list[int], price: list[int], theta0, theta1) -> None:
     graph.axline((0, theta0), slope=theta1)
     graph.xlabel("Km")
     graph.ylabel("Price")
-    graph.title("Line")
+    graph.title("Regression line")
     # graph.show()
-    save_graph("line.png")
+    save_graph("regression_line.png")
     graph.close()
 
 
@@ -41,9 +41,9 @@ def show_cost(iterations: list[float], cost: list[float]) -> None:
     graph.xlabel("Epoch")
     graph.ylabel("Cost")
     graph.yscale("log")
-    graph.title("How well")
+    graph.title("Training cost")
     # graph.show()
-    save_graph("cost.png")
+    save_graph("training_cost.png")
     graph.close()
 
 
