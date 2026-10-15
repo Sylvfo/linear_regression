@@ -8,7 +8,9 @@ def show_data_distribution(km: list[int], price: list[int]) -> None:
     graph.xlabel("Km")
     graph.ylabel("Price")
     graph.title("Data Distribution")
-    graph.show()
+    #graph.show()
+    #graph.figlegend(handles, labels, loc='lower right')
+    graph.save_fig("data_distribution", "data_distribution.png")
 
 
 def show_data_line(km: list[int], price: list[int], theta0, theta1) -> None:
@@ -21,7 +23,7 @@ def show_data_line(km: list[int], price: list[int], theta0, theta1) -> None:
     graph.xlabel("Km")
     graph.ylabel("Price")
     graph.title("Line")
-    graph.show()
+    #graph.show()
 
 
 def show_cost(iterations: list[float], cost: list[float]) -> None:
@@ -32,4 +34,6 @@ def show_cost(iterations: list[float], cost: list[float]) -> None:
     graph.xlabel("Epoch")
     graph.ylabel("Cost")
     graph.title("How well")
-    graph.show()
+    #graph.show()
+
+#def save

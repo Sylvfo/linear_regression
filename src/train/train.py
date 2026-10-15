@@ -33,9 +33,9 @@ def train(data_set_path: str):
         logging.critical("not same number of inputs for km and price in data.csv")
         sys.exit(1)
 
-    show_data_distribution(km, price)
+    #show_data_distribution(km, price)
     theta0, theta1 = linear_regression(km, price)
-    show_data_line(km, price, theta0, theta1)
+    #show_data_line(km, price, theta0, theta1)
     try:
         save_theta(theta0, theta1)
     except:
@@ -66,11 +66,11 @@ def linear_regression(km: list[int], price: list[int]) -> tuple[float, float] :
 
         #bonus
         cost = cost_function(norm_km, price, theta0, theta1)
-        print(f"error_cost1 {cost}\n")
+        #print(f"error_cost1 {cost}\n")
         history_cost.append(cost)
         history_iterations.append(n)
 
-    show_cost(history_iterations, history_cost)
+    #show_cost(history_iterations, history_cost)
     return theta0, theta1
 
 def estim_price(km, theta0, theta1) -> float:
@@ -114,37 +114,3 @@ if __name__ == "__main__":
         sys.exit(1)
 
     train(sys.argv[1])
-
-
-    """
-    1 predict result
-    2 calculate error
-    3 gradient
-    4repeat n time
-
-
-def update_thetas(error_cost0, error_cost1) -> tuple[float, float]:
-    theta0 -= LEARNING_RATE * error_cost0
-    theta1 -= LEARNING_RATE * error_cost1
-    return theta0, theta1
-
-
-def gradient_function0(km, price, theta0, theta1) -> float:
-    error_cost = 0
-    nb_data = len(price)
-    for i in range(nb_data):
-        error_cost += estim_price(km[i], theta0, theta1) - price[i]
-    error_cost /= nb_data
-    print (error_cost)
-    return error_cost
-
-def gradient_function1(km, price, theta0, theta1) -> float:
-    error_cost = 0
-    nb_data = len(price)
-    for i in range(nb_data):
-        error_cost += (estim_price(km[i], theta0, theta1) - price[i]) * km[i]
-    error_cost /= nb_data
-    return error_cost 
-
-
-        """

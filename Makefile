@@ -4,7 +4,7 @@ PYTHON = PYTHONPATH=src venv/bin/python3
 PIP = venv/bin/pip
 FLAKE = venv/bin/flake8
 
-all: install predict train
+all: install train predict 
 
 install:
 	python3 -m venv venv
@@ -22,4 +22,4 @@ flake:
 fclean:
 	rm -f model.csv
 
-.PHONY: all install predict train flake
+.PHONY: all install train predict flake
