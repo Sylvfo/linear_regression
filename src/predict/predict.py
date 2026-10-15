@@ -1,5 +1,4 @@
 from helper.read_data import load_theta
-from helper.read_data import save_theta
 import logging
 import sys
 

@@ -1,21 +1,25 @@
 DATA_SET = src/data/data.csv
 
-PYTHON = PYTHONPATH=src .venv/bin/python3
-PIP = .venv/bin/pip
-FLAKE = .venv/bin/flake8
+PYTHON = PYTHONPATH=src venv/bin/python3
+PIP = venv/bin/pip
+FLAKE = venv/bin/flake8
 
-all: predict train
+all: install train predict 
+
+install:
+	python3 -m venv venv
+	venv/bin/pip install -r requirements.txt
 
 predict:
 	$(PYTHON) src/predict/predict.py
 
 train:
-	$(PYTHON) src/train/train.py
+	$(PYTHON) src/train/train.py $(DATA_SET)
 
 flake:
 	$(FLAKE) src
 
 fclean:
 	rm -f model.csv
-	
-.PHONY: all predict train flake
+
+.PHONY: all install train predict flake
