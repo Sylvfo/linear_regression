@@ -64,3 +64,5 @@ You do this again and again until the sum ... Cannot be closer to zero
 
 venv:
 Quand tu appelles directement venv/bin/python3 (ou venv/bin/pip), tu utilises le venv sans avoir besoin de l'activer. C'est exactement ce que fait activate en coulisses : il fait pointer python3 vers ce fichier.
+
+#!/usr/bin/env python3

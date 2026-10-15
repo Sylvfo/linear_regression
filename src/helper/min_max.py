@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 def ft_min(values: list[int]) -> float:
     if not values:
         return float('nan')
@@ -6,6 +8,7 @@ def ft_min(values: list[int]) -> float:
         if v < min_value:
             min_value = v
     return min_value
+
 
 def ft_max(values: list[int]) -> float:
     if not values:
