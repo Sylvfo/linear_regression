@@ -6,6 +6,7 @@ PLOTS_ROOT = Path(__file__).resolve().parents[2] / "plots"
 
 def show_data_distribution(km: list[int], price: list[int]) -> None:
     graph.figure()
+    graph.figure()
     graph.style.use('default')
 
     graph.plot(km,price, 'bo')
@@ -18,13 +19,12 @@ def show_data_distribution(km: list[int], price: list[int]) -> None:
 
 
 def show_data_line(km: list[int], price: list[int], theta0, theta1) -> None:
-    graph.figure()
+
     graph.style.use('default')
+    graph.figure()
 
     graph.plot(km,price, 'bo')
-    # make an other line with thetas
     graph.axline((0,theta0), slope= theta1)
-
     graph.xlabel("Km")
     graph.ylabel("Price")
     graph.title("Line")
@@ -33,13 +33,15 @@ def show_data_line(km: list[int], price: list[int], theta0, theta1) -> None:
     graph.close()
 
 def show_cost(iterations: list[float], cost: list[float]) -> None:
-    graph.figure()
+    
     graph.style.use('default')
+    graph.figure()
 
     graph.plot(iterations, cost)
     # make an other line with thetas
     graph.xlabel("Epoch")
     graph.ylabel("Cost")
+    graph.yscale("log")
     graph.title("How well")
     save_graph("cost.png")
     graph.close()
