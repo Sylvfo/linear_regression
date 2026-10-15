@@ -1,7 +1,11 @@
 import matplotlib.pyplot as graph
+import logging
+from pathlib import Path
+
+PLOTS_ROOT = Path(__file__).resolve().parents[2] / "plots"
 
 def show_data_distribution(km: list[int], price: list[int]) -> None:
-
+    graph.figure()
     graph.style.use('default')
 
     graph.plot(km,price, 'bo')
@@ -9,24 +13,27 @@ def show_data_distribution(km: list[int], price: list[int]) -> None:
     graph.ylabel("Price")
     graph.title("Data Distribution")
     #graph.show()
-    #graph.figlegend(handles, labels, loc='lower right')
-    graph.save_fig("data_distribution", "data_distribution.png")
+    save_graph("data_distribution.png")
+    graph.close()
 
 
 def show_data_line(km: list[int], price: list[int], theta0, theta1) -> None:
-
+    graph.figure()
     graph.style.use('default')
 
     graph.plot(km,price, 'bo')
     # make an other line with thetas
-    graph.plot(theta0,theta1)
+    graph.axline((0,theta0), slope= theta1)
+
     graph.xlabel("Km")
     graph.ylabel("Price")
     graph.title("Line")
     #graph.show()
-
+    save_graph("line.png")
+    graph.close()
 
 def show_cost(iterations: list[float], cost: list[float]) -> None:
+    graph.figure()
     graph.style.use('default')
 
     graph.plot(iterations, cost)
@@ -34,6 +41,28 @@ def show_cost(iterations: list[float], cost: list[float]) -> None:
     graph.xlabel("Epoch")
     graph.ylabel("Cost")
     graph.title("How well")
-    #graph.show()
+    save_graph("cost.png")
+    graph.close()
 
-#def save
+def save_graph(filename: str, tight: bool = True) -> Path:
+    out_dir = PLOTS_ROOT
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / filename
+    if tight:
+        graph.tight_layout()
+    graph.savefig(out_path)
+    logging.info(f"Saved plot to {out_path}")
+    return out_path
+
+
+"""
+def save_graph(subdir: str, filename: str, tight: bool = True) -> Path:
+    out_dir = PLOTS_ROOT / subdir
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / filename
+    if tight:
+        graph.tight_layout()
+    graph.savefig(out_path)
+    logging.info(f"Saved plot to {out_path}")
+    return out_path
+    """

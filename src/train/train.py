@@ -6,13 +6,14 @@ from helper.read_data import save_theta
 from bonus.graphs import show_data_distribution
 from bonus.graphs import show_data_line
 from bonus.graphs import show_cost
+from helper.normalize import normalized_km, rescale_km, save_normalization
 import matplotlib.pyplot as graph
 import numpy as np
 import math
 from helper.min_max import ft_min, ft_max
 
 EPOCH = 1000
-LEARNING_RATE = 0.005
+LEARNING_RATE = 0.05
 
 def train(data_set_path: str):
     print("hey you let's train")
@@ -33,11 +34,16 @@ def train(data_set_path: str):
         logging.critical("not same number of inputs for km and price in data.csv")
         sys.exit(1)
 
-    #show_data_distribution(km, price)
-    theta0, theta1 = linear_regression(km, price)
-    #show_data_line(km, price, theta0, theta1)
+
+
+    norm_km, km_min, km_max = normalized_km(km)
+    show_data_distribution(norm_km, price)
+    theta0, theta1 = linear_regression(norm_km, price)
+    show_data_line(norm_km, price, theta0, theta1)
+
     try:
-        save_theta(theta0, theta1)
+        save_theta("model.csv",theta0, theta1)
+        save_normalization("model.csv",km_min, km_max)
     except:
         logging.critical("impossible to save model.csv")
         sys.exit(1)
@@ -53,24 +59,24 @@ def linear_regression(km: list[int], price: list[int]) -> tuple[float, float] :
     if nb_data == 0:
         return
     
-    norm_km = normalized_km(km)
+    #norm_km, km_min, km_max = normalized_km(km)
 
     history_cost = []
     history_iterations = []
     for n in range(EPOCH):
-        gradient0,gradient1 = gradient_function(norm_km, price, theta0, theta1)
+        gradient0,gradient1 = gradient_function(km, price, theta0, theta1)
         
         #update thetas
         theta0 -= LEARNING_RATE * gradient0
         theta1 -= LEARNING_RATE * gradient1
 
         #bonus
-        cost = cost_function(norm_km, price, theta0, theta1)
+        cost = cost_function(km, price, theta0, theta1)
         #print(f"error_cost1 {cost}\n")
         history_cost.append(cost)
         history_iterations.append(n)
 
-    #show_cost(history_iterations, history_cost)
+    show_cost(history_iterations, history_cost)
     return theta0, theta1
 
 def estim_price(km, theta0, theta1) -> float:
@@ -87,16 +93,6 @@ def gradient_function(km, price, theta0, theta1) -> tuple [float, float]:
     gradient0 /= nb_data
     gradient1 /= nb_data
     return gradient0, gradient1
-
-def normalized_km(km: list[int]) -> list[float]:
-    min_km = ft_min(km)
-    max_km = ft_max(km)
-    print(f"min {min_km} max {max_km}")
-    #handle errors
-    if min_km == max_km:
-        return
-    norm_km = [(x - min_km) / (max_km - min_km) for x in km]
-    return norm_km
 
 #bonus
 def cost_function(km, price, theta0, theta1):

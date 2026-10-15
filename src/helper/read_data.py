@@ -1,8 +1,8 @@
 import csv
 import sys
 
-def save_theta(theta0, theta1):
-    with open("model.csv", "w") as file:
+def save_theta(path: str, theta0, theta1):
+    with open(path, "w") as file:
         file.write(f"{theta0},{theta1}\n")
 
 

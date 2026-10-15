@@ -21,5 +21,6 @@ flake:
 
 fclean:
 	rm -f model.csv
+	rm -rf plots
 
 .PHONY: all install train predict flake

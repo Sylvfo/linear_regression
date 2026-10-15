@@ -58,3 +58,9 @@ theta0 is for weight (slope of the line) and theta1 is intercept of the line or 
 
 Yeah ok, then temptheta1 and temptheta2 is how much you are going to change theta1 and theta2 such that next time make the sum .... Be closer to zero
 You do this again and again until the sum ... Cannot be closer to zero
+
+
+
+
+venv:
+Quand tu appelles directement venv/bin/python3 (ou venv/bin/pip), tu utilises le venv sans avoir besoin de l'activer. C'est exactement ce que fait activate en coulisses : il fait pointer python3 vers ce fichier.
