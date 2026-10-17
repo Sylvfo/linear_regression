@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import csv
-import math
+
 
 def save_theta(path: str, theta0, theta1):
     with open(path, "w") as file:

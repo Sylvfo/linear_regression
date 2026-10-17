@@ -24,7 +24,7 @@ def predict():
         logging.warning("model.csv not found, using theta0 = 0 and theta1 = 0")
     except ValueError as e:
         logging.critical(f"invalid model: {e}")
-        sys.exit(1)    
+        sys.exit(1)
 
     mileage_norm = normalized_km_predict(mileage, km_min, km_max)
     estimatePrice = theta0 + (theta1 * mileage_norm)

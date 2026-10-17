@@ -21,7 +21,6 @@ def train(data_set_path: str):
         logging.critical(f"invalid dataset: {e}")
         sys.exit(1)
 
-
     show_data_distribution(norm_km, price)
     theta0, theta1 = linear_regression(norm_km, price)
     show_data_line(norm_km, price, theta0, theta1)
@@ -34,19 +33,17 @@ def train(data_set_path: str):
         sys.exit(1)
 
 
-def linear_regression(km: list[int], price: list[int]) -> tuple[float, float] :
+def linear_regression(km: list[int], price: list[int]) -> tuple[float, float]:
 
-    theta0 = 0 # bias 
-    theta1 = 0 # weights
-
-    nb_data = len(price)
+    theta0 = 0  # bias
+    theta1 = 0  # weights
 
     history_cost = []
     history_iterations = []
     for n in range(EPOCH):
-        gradient0,gradient1 = gradient_function(km, price, theta0, theta1)
-        
-        #update thetas
+        gradient0, gradient1 = gradient_function(km, price, theta0, theta1)
+
+        # update thetas
         theta0 -= LEARNING_RATE * gradient0
         theta1 -= LEARNING_RATE * gradient1
 
@@ -61,10 +58,10 @@ def linear_regression(km: list[int], price: list[int]) -> tuple[float, float] :
 
 
 def estim_price(km, theta0, theta1) -> float:
-    return theta0 +(theta1 * km)
+    return theta0 + (theta1 * km)
 
 
-def gradient_function(km, price, theta0, theta1) -> tuple [float, float]:
+def gradient_function(km, price, theta0, theta1) -> tuple[float, float]:
     gradient0 = 0
     gradient1 = 0
     nb_data = len(price)
@@ -77,14 +74,14 @@ def gradient_function(km, price, theta0, theta1) -> tuple [float, float]:
     return gradient0, gradient1
 
 
-#bonus
+# bonus
 def cost_function(km, price, theta0, theta1):
     cost = 0
     nb_data = len(price)
     for i in range(nb_data):
         estimate_price = estim_price(km[i], theta0, theta1)
         cost += (estimate_price - price[i]) ** 2
-    return cost/ nb_data
+    return cost / nb_data
 
 
 if __name__ == "__main__":
